@@ -8,4 +8,5 @@ function deepCopy(obj) {
         typeof obj[key] === "object" ? deepCopy(obj[key]) : obj[key];
     }
   }
+  return newObj;
 }
