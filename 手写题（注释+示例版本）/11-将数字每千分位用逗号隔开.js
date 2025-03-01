@@ -1,17 +1,20 @@
-const thousandSeparator = function () {
-  n = n.toString();
+/**
+ * @param {number} n
+ * @return {string}
+ */
+var thousandSeparator = function (n) {
+  let ans = "";
   let cnt = 0;
-  let arr = [];
-  for (let i = n.length - 1; i >= 0; i--) {
-    if (cnt < 4) {
-      arr.push(n[i]);
-    } else {
-      // arr.push([".", num])  =>  输出: [ [ '.', '5' ] ]
-      // arr.push(...[".", num]);  =>  输出: [ '.', '5' ]
-      arr.push(...[".", n[i]]);
-      cnt = 1;
+  do {
+    let cur = n % 10;
+    n = Math.floor(n / 10); //舍弃小数位  不然123.4 下一步再123.4%10 ->cur变3.4了
+    ans += cur.toString();
+    cnt++;
+    if (cnt % 3 === 0 && n) {
+      ans += ".";
     }
-  }
-  //  ['1', '.', '2', '3', '4']  =>  [ '4', '3', '2', '.', '1' ]   =>   输出："432.1"
-  return arr.reverse().join();
+  } while (n);
+  return ans.split("").reverse().join("");
 };
+
+// 或者直接 return n.toLocaleString("de-DE");            【参考MDN】

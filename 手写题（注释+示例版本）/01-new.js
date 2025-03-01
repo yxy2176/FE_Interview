@@ -1,9 +1,11 @@
+// 使用 new 关键字调用构造函数创建对象
 function myNew(constructor, ...args) {
   // 1：检查传入的第一个参数是否为函数
   if (typeof constructor !== "function") return;
   // 2:创建一个空对象
   const obj = {};
   // 3:将这个新对象的内部原型链接到构造函数的 prototype 对象
+  // Object.create()  ->   用于创建一个新对象，这个新对象的原型会被设置为传入的参数。
   obj.__proto__ = Object.create(constructor.prototype); //  因为new 操作创建的对象会继承构造函数原型上的属性和方法
   // 4:使用构造函数初始化新对象
   let ret = constructor.call(obj, ...args); // 构造函数内部的 this 就指向了 obj，从而可以为 obj 添加属性和方法
