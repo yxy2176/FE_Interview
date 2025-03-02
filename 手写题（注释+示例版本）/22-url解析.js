@@ -20,7 +20,7 @@ const parseURL = (url) => {
 
 // 简单写法
 const parseUrl = (url) => {
-  const tmpUrl = url.split("?")[1];
+  const tmpUrl = url.split("?")[1]||"";
   const resObj = {};
   for (const str of tmpUrl.split("&")) {
     let [key, value] = str.split("=");
