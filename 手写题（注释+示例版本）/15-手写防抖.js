@@ -7,17 +7,14 @@
  */
 
 function debounce(fn, delay) {
-  // 创建一个标记用来存放定时器
   let timer = null;
-  return function (...args) {
-    if (timer) {
-      clearTimeout(timer);
-      timer = null;
-    }
+  const _debounce = function (...args) {
+    if (timer) clearTimeout(timer);
     timer = setTimeout(() => {
       fn.apply(this, args);
     }, delay);
   };
+  return _debounce;
 }
 
 // clearTimeout()清除了定时器之后timer会变成一个类型为Number的数字，所以timer为true，下次就不生效了。所以要设置为null

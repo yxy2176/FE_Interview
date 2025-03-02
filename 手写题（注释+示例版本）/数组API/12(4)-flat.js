@@ -13,5 +13,17 @@ function myFlat(arr, depth) {
   }, []);
 }
 
-// 完全扁平化的调用：
+// 完全扁平化的调用  --->传入参数为Infinity
 // arr.flat(Infinity)
+
+const flat = (arr, depth = 1) => {
+  let res = []; //必须是let
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i]) && depth) {
+      res = res.concat(flat(arr[i], depth - 1)); //返回新数组
+    } else {
+      res.push(arr[i]);
+    }
+  }
+  return res;
+};

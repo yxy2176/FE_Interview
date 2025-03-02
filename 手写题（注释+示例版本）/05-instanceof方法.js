@@ -4,6 +4,8 @@
 // 函数会判断 left 对象是否是 right 构造函数的实例
 function myInstanceof(left, right) {
   // 1 获取对象的原型
+  // Object.getPrototypeOf() 是获取对象原型的标准方法，建议在大多数情况下使用。
+  // __proto__ 虽然方便，但不是标准属性，兼容性存在问题。
   let proto = Object.getPrototypeOf(left);
   // 2 获取构造函数的原型对象
   let prototype = right.prototype;
