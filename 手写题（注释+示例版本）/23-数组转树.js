@@ -34,3 +34,7 @@ function toTree(list,parId){
     }
     return loop(parId)
 }
+
+// 使用示例：
+let result = toTree(arr, "");
+console.log(result);
